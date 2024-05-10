@@ -32,7 +32,12 @@ const Card = () => {
       .catch((err) => setError(err.message));
   }, []);
 
-  console.log(user.email);
+  const handleClick = () => {
+    axios
+      .get("https://randomuser.me/api/")
+      .then((res) => setUser(res.data.results[0]))
+      .catch((err) => setError(err.message));
+  };
   return (
     <>
       {error ? <h1>Error: {error}</h1> : null}
@@ -52,7 +57,7 @@ const Card = () => {
       </div>
 
       <div className="mt-5">
-        <Button />
+        <Button onClick={handleClick} />
       </div>
     </>
   );
