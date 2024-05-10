@@ -1,7 +1,13 @@
-const Button = () => {
+interface ButtonProps {
+  onClick: () => void;
+}
+
+const Button = ({ onClick }: ButtonProps) => {
   return (
     <div>
-      <button className="btn btn-wide">Generate</button>
+      <button onClick={onClick} className="btn btn-wide">
+        Generate
+      </button>
     </div>
   );
 };
