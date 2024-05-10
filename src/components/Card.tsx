@@ -29,12 +29,13 @@ const Card = () => {
     axios
       .get("https://randomuser.me/api/")
       .then((res) => setUser(res.data.results[0]))
-      .catch((err) => console.log(err.message));
+      .catch((err) => setError(err.message));
   }, []);
 
   console.log(user.email);
   return (
     <>
+      {error ? <h1>Error: {error}</h1> : null}
       <div>
         <Avatar picture={user.picture} />
       </div>
